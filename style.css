@@ -1152,19 +1152,48 @@ section{
 
 }
 
+/* Quando o modal exibe vídeo, escurece o fundo da coluna de mídia
+   e permite que o vídeo em contain ocupe toda a altura disponível */
+.modal-content:has(.modal-video) .modal-image{
+
+    background:#000;
+
+}
+
 .modal-image{
+
+    /* Flex para centralizar o vídeo verticalmente no desktop */
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     height:100%;
     min-height:440px;
     overflow:hidden;
 
+    /* Fundo escuro atrás do vídeo em contain para não ficar branco */
+    background:#0a0a0a;
+
 }
 
+/* Imagem: cover — ocupa toda a área da coluna (sem corte visível) */
 .modal-image img{
 
     width:100%;
     height:100%;
     object-fit:cover;
+    display:block;
+
+}
+
+/* Vídeo: contain — exibe o arquivo completo sem cortes */
+.modal-image video,
+.modal-video{
+
+    width:100%;
+    height:100%;
+    max-height:90vh;
+    object-fit:contain;
     display:block;
 
 }
@@ -1766,21 +1795,34 @@ section{
 
     }
 
-    .modal-image img,
-    .modal-image video{
+    /* Imagem: contain no mobile (igual à correção anterior) */
+    .modal-image img{
 
-        /* contain: mostra a peça publicitária COMPLETA, sem cortes */
         object-fit:contain;
-
         width:100%;
-
-        /* Altura automática — respeita a proporção original
-           (1:1 para posts, 4:5 para feed, 9:16 para Stories) */
         height:auto;
-        max-height:75vw; /* limita em telas muito altas para não ocupar tudo */
+        max-height:75vw;
+        display:block;
+        border-radius:10px;
+
+    }
+
+    /* Vídeo: contain + altura automática — sem cortes em nenhum formato
+       (quadrado 1:1, vertical 9:16, horizontal 16:9) */
+    .modal-image video,
+    .modal-video{
+
+        object-fit:contain;
+        width:100%;
+        height:auto;
+
+        /* Limita vídeos muito longos (ex.: Stories 9:16) para não
+           empurrar o texto para fora da tela antes de rolar */
+        max-height:80vw;
 
         display:block;
-        border-radius:10px; /* borda sutil na arte em si */
+        border-radius:10px;
+        background:#000; /* fundo preto nas barras laterais do contain */
 
     }
 

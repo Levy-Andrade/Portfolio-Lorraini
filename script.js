@@ -220,11 +220,13 @@ function abrirProjeto(arquivo, titulo, descricao, categoria) {
 
     if (isVideo) {
 
-        /* Remove img existente e coloca vídeo */
+        /* Injeta vídeo sem estilos inline — object-fit e dimensões
+           são controlados exclusivamente pelo CSS para permitir
+           contain tanto no desktop quanto no mobile */
         modalImageEl.innerHTML = `
             <video src="${srcFinal}"
                    autoplay muted loop playsinline
-                   style="width:100%;height:100%;object-fit:cover;display:block;">
+                   class="modal-video">
             </video>`;
 
     } else {
