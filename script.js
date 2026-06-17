@@ -251,10 +251,16 @@ function abrirProjeto(arquivo, titulo, descricao, categoria) {
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
             modal.classList.add("modal-ativo");
+            /* Garante que o modal volte ao topo a cada abertura */
+            modal.scrollTop = 0;
         });
     });
 
-    document.body.style.overflow = "hidden";
+    /* No desktop trava o scroll do body para evitar rolagem dupla.
+       No mobile (< 768px) deixa o .modal em si rolar — não trava o body. */
+    if (window.innerWidth >= 768) {
+        document.body.style.overflow = "hidden";
+    }
 
     if (closeModal) closeModal.focus();
 
@@ -277,6 +283,7 @@ function fecharModal() {
 
     }, { once: true });
 
+    /* Restaura scroll do body (no mobile pode já estar "" mas não faz mal) */
     document.body.style.overflow = "";
 
 }

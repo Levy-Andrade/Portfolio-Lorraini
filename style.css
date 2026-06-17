@@ -1130,7 +1130,11 @@ section{
     max-height:90vh;
     background:var(--branco);
     border-radius:22px;
+
+    /* overflow:hidden bloqueava o scroll interno no mobile.
+       Agora o overflow fica com cada filho (imagem e texto). */
     overflow:hidden;
+
     display:grid;
     grid-template-columns:1.15fr 1fr;
     position:relative;
@@ -1714,12 +1718,81 @@ section{
         gap:48px;
     }
 
+    /* ── MODAL MOBILE — coluna única + scroll interno ── */
+
+    .modal{
+        /* Alinha ao topo para dar espaço ao scroll;
+           padding menor nas laterais para usar a largura toda */
+        align-items:flex-start;
+        justify-content:center;
+        padding:16px;
+        overflow-y:auto;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    .modal-content{
+        /* Uma única coluna: imagem em cima, texto embaixo */
+        grid-template-columns:1fr;
+        display:flex;
+        flex-direction:column;
+
+        /* Altura máxima relativa à viewport; não precisa de 90vh
+           pois o .modal em si já tem overflow-y e o usuário rola o overlay */
+        max-height:none;
+        width:100%;
+        border-radius:18px;
+
+        /* Reseta a animação para não causar jitter no scroll */
+        margin:auto;
+    }
+
+    .modal-image{
+        /* Imagem compacta no topo — não ocupa metade da tela */
+        min-height:220px;
+        max-height:260px;
+        height:260px;
+        overflow:hidden;
+        border-radius:18px 18px 0 0;
+        flex-shrink:0;
+    }
+
+    .modal-image img,
+    .modal-image video{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        display:block;
+    }
+
     .modal-text{
-        padding:35px 28px;
+        /* Padding mais compacto e scroll no texto se necessário */
+        padding:28px 22px 32px;
+        overflow-y:visible;
+        justify-content:flex-start;
+        flex:1;
     }
 
     .modal-text h2{
-        font-size:1.8rem;
+        font-size:1.55rem;
+        margin-bottom:14px;
+    }
+
+    .modal-text p{
+        font-size:0.9rem;
+        margin-bottom:22px;
+    }
+
+    /* Botão X sempre visível no canto — posição fixa relativa ao card */
+    .close-modal{
+        top:12px;
+        right:12px;
+        width:34px;
+        height:34px;
+        font-size:16px;
+        /* Garante fundo opaco para ficar legível sobre a imagem */
+        background:rgba(255,255,255,0.90);
+        backdrop-filter:blur(4px);
+        -webkit-backdrop-filter:blur(4px);
     }
 
     .card-float{
