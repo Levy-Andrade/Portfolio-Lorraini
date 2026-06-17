@@ -1721,8 +1721,6 @@ section{
     /* ── MODAL MOBILE — coluna única + scroll interno ── */
 
     .modal{
-        /* Alinha ao topo para dar espaço ao scroll;
-           padding menor nas laterais para usar a largura toda */
         align-items:flex-start;
         justify-content:center;
         padding:16px;
@@ -1731,45 +1729,69 @@ section{
     }
 
     .modal-content{
-        /* Uma única coluna: imagem em cima, texto embaixo */
         grid-template-columns:1fr;
         display:flex;
         flex-direction:column;
-
-        /* Altura máxima relativa à viewport; não precisa de 90vh
-           pois o .modal em si já tem overflow-y e o usuário rola o overlay */
         max-height:none;
         width:100%;
         border-radius:18px;
-
-        /* Reseta a animação para não causar jitter no scroll */
         margin:auto;
+        /* overflow visível para a imagem não ser clipada */
+        overflow:visible;
+        /* sombra mantida */
+        box-shadow:0 20px 60px rgba(0,0,0,0.40);
     }
 
     .modal-image{
-        /* Imagem compacta no topo — não ocupa metade da tela */
-        min-height:220px;
-        max-height:260px;
-        height:260px;
-        overflow:hidden;
+
+        /* Remove alturas fixas que causavam o corte */
+        height:auto;
+        min-height:unset;
+        max-height:unset;
+
+        /* Sem overflow:hidden — a imagem define sua própria altura */
+        overflow:visible;
+
+        /* Bordas arredondadas só no topo do card */
         border-radius:18px 18px 0 0;
+
         flex-shrink:0;
+
+        /* Fundo sutil enquanto a imagem carrega */
+        background:var(--roxo-claro);
+
+        /* Espaçamento lateral para a arte não encostar nas bordas
+           e padding-top para o botão X não sobrepor a imagem */
+        padding:48px 12px 12px;
+
     }
 
     .modal-image img,
     .modal-image video{
+
+        /* contain: mostra a peça publicitária COMPLETA, sem cortes */
+        object-fit:contain;
+
         width:100%;
-        height:100%;
-        object-fit:cover;
+
+        /* Altura automática — respeita a proporção original
+           (1:1 para posts, 4:5 para feed, 9:16 para Stories) */
+        height:auto;
+        max-height:75vw; /* limita em telas muito altas para não ocupar tudo */
+
         display:block;
+        border-radius:10px; /* borda sutil na arte em si */
+
     }
 
     .modal-text{
-        /* Padding mais compacto e scroll no texto se necessário */
-        padding:28px 22px 32px;
+        padding:24px 22px 32px;
         overflow-y:visible;
         justify-content:flex-start;
         flex:1;
+        /* Restaura background branco pois o overflow do pai ficou visible */
+        background:var(--branco);
+        border-radius:0 0 18px 18px;
     }
 
     .modal-text h2{
@@ -1782,17 +1804,17 @@ section{
         margin-bottom:22px;
     }
 
-    /* Botão X sempre visível no canto — posição fixa relativa ao card */
+    /* Botão X — posição absoluta relativa ao .modal-content (position:relative herdado) */
     .close-modal{
-        top:12px;
-        right:12px;
+        top:10px;
+        right:10px;
         width:34px;
         height:34px;
-        font-size:16px;
-        /* Garante fundo opaco para ficar legível sobre a imagem */
-        background:rgba(255,255,255,0.90);
-        backdrop-filter:blur(4px);
-        -webkit-backdrop-filter:blur(4px);
+        font-size:15px;
+        background:rgba(255,255,255,0.92);
+        backdrop-filter:blur(6px);
+        -webkit-backdrop-filter:blur(6px);
+        box-shadow:0 2px 8px rgba(0,0,0,0.15);
     }
 
     .card-float{
