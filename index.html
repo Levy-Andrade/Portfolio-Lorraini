@@ -7,120 +7,86 @@
          META TAGS
     ==================================================== -->
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- ===================================================
          TÍTULO
     ==================================================== -->
-    <title>
-        Lorraini Espanga Paris | Publicidade & Propaganda
-    </title>
-    <link rel="icon" href="logo paris.png" type="image/x-icon">
+    <title>Lorraini Espanga Paris | Publicidade & Propaganda</title>
+    <link rel="icon" href="assets/FOTOS/logo paris.png" type="image/png">
+    <link rel="shortcut icon" href="assets/FOTOS/logo paris.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/FOTOS/logo paris.png">
 
     <!-- ===================================================
-         GOOGLE FONTS
+         GOOGLE FONTS — Playfair Display + DM Sans
     ==================================================== -->
-    <link rel="preconnect"
-        href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
     <!-- ===================================================
          FONT AWESOME
     ==================================================== -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- ===================================================
          CSS
     ==================================================== -->
-    <link rel="stylesheet"
-        href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
     <!-- ===================================================
+         PRELOADER
+    ==================================================== -->
+    <div class="preloader">
+        <div class="preloader-inner"></div>
+    </div>
+
+    <!-- ===================================================
          HEADER
     ==================================================== -->
-    <header class="header glass">
+    <header class="header">
 
         <div class="container header-container">
 
-            <!-- ===================================================
-                 LOGO
-            ==================================================== -->
+            <!-- LOGO -->
             <div class="logo">
-
-                <img src="logo paris.png"
-                    alt="Logo Lorraini Paris">
-
-                <h2>
-                    Lorraini Espanga Paris
-                </h2>
-
+                <img src="assets/FOTOS/logo paris.png" alt="Logo Lorraini Paris">
+                <h2>Lorraini Espanga Paris</h2>
             </div>
 
-            <!-- ===================================================
-                 MENU
-            ==================================================== -->
+            <!-- MENU DESKTOP -->
             <nav class="nav">
-
                 <ul class="nav-list">
-
-                    <li>
-                        <a href="#home">
-                            Home
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#sobre">
-                            Sobre
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#especialidades">
-                            Especialidades
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#projetos">
-                            Projetos
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#contato">
-                            Contato
-                        </a>
-                    </li>
-
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#formacao">Formação</a></li>
+                    <li><a href="#especialidades">Especialidades</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#contato">Contato</a></li>
                 </ul>
-
             </nav>
 
-            <!-- ===================================================
-                 DARK MODE
-            ==================================================== -->
-            <label class="switch">
+            <!-- CONTROLES HEADER -->
+            <div class="header-controls">
 
-                <input type="checkbox"
-                    id="dark-mode-toggle">
+                <!-- DARK MODE -->
+                <label class="switch" title="Alternar tema">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider"></span>
+                </label>
 
-                <span class="slider"></span>
+                <!-- MENU MOBILE (hamburguer) -->
+                <button class="menu-toggle" aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
 
-            </label>
+            </div>
 
         </div>
 
@@ -134,60 +100,39 @@
         <!-- ===================================================
              HERO
         ==================================================== -->
-        <section id="home"
-            class="hero">
+        <section id="home" class="hero">
 
-            <!-- ===================================================
-                 VÍDEO BACKGROUND
-            ==================================================== -->
-            <video autoplay
-                muted
-                loop
-                class="bg-video">
-
-                <source src="4K Free Social Media Icons _ 4k Looped Background _ 4k Free  Footage.mp4"
-                    type="video/mp4">
-
+            <!-- VÍDEO BACKGROUND -->
+            <video autoplay muted loop class="bg-video">
+                <source src="assets/VIDEOS/4K Free Social Media Icons _ 4k Looped Background _ 4k Free  Footage.mp4" type="video/mp4">
             </video>
 
-            <!-- ===================================================
-                 OVERLAY
-            ==================================================== -->
+            <!-- OVERLAY -->
             <div class="overlay"></div>
 
             <div class="container hero-container">
 
-                <!-- ===================================================
-                     TEXTO HERO
-                ==================================================== -->
+                <!-- TEXTO HERO -->
                 <div class="hero-content">
 
-                    <span class="tag">
-                        Publicidade & Branding
-                    </span>
+                    <span class="tag">Publicidade & Branding</span>
 
                     <h1>
                         Transformando ideias em
-                        <span>
-                            marcas memoráveis.
-                        </span>
+                        <span>marcas memoráveis.</span>
                     </h1>
 
-                    <p>
-                        Social Media • Design Gráfico • Marketing Digital • Fotografia Publicitária
-                    </p>
+                    <p>Social Media • Design Gráfico • Marketing Digital • Fotografia Publicitária</p>
 
                     <!-- BOTÕES -->
                     <div class="hero-buttons">
 
                         <!-- CURRÍCULO -->
-                        <a href="curriculo lorraini.pdf"
+                        <a href="assets/DOCUMENTO/curriculo lorraini.pdf"
                             class="btn btn-primary"
                             target="_blank"
                             rel="noopener noreferrer">
-
                             Ver Currículo
-
                         </a>
 
                         <!-- WHATSAPP -->
@@ -195,23 +140,16 @@
                             target="_blank"
                             class="btn btn-outline"
                             rel="noopener noreferrer">
-
                             Falar no WhatsApp
-
                         </a>
 
                     </div>
 
                 </div>
 
-                <!-- ===================================================
-                     FOTO HERO
-                ==================================================== -->
+                <!-- FOTO HERO -->
                 <div class="hero-image">
-
-                    <img src="foto perfil lorraini.jpeg"
-                        alt="Lorraini Espanga Paris">
-
+                    <img src="assets/FOTOS/foto perfil lorraini.jpeg" alt="Lorraini Espanga Paris">
                 </div>
 
             </div>
@@ -221,34 +159,22 @@
         <!-- ===================================================
              SOBRE
         ==================================================== -->
-        <section id="sobre"
-            class="sobre">
+        <section id="sobre" class="sobre">
 
             <div class="container sobre-container">
 
                 <!-- FOTO -->
                 <div class="sobre-image">
 
-                    <img src="foto perfil lorraini.jpeg"
-                        alt="Lorraini Paris">
+                    <img src="assets/FOTOS/foto perfil lorraini.jpeg" alt="Lorraini Paris">
 
                     <!-- CARD FLUTUANTE -->
                     <div class="card-float">
-
                         <i class="fa-solid fa-star"></i>
-
                         <div>
-
-                            <h4>
-                                Marketing Digital
-                            </h4>
-
-                            <p>
-                                Branding & Social Media
-                            </p>
-
+                            <h4>Marketing Digital</h4>
+                            <p>Branding & Social Media</p>
                         </div>
-
                     </div>
 
                 </div>
@@ -256,38 +182,138 @@
                 <!-- TEXTO -->
                 <div class="sobre-content">
 
-                    <span class="section-tag">
-                        SOBRE MIM
-                    </span>
+                    <span class="section-tag">SOBRE MIM</span>
 
-                    <h2>
-                        Criatividade, estratégia e identidade visual.
-                    </h2>
+                    <h2>Criatividade, estratégia e identidade visual.</h2>
 
                     <p>
-                        Sou <strong>Lorraini Paris</strong>,
-                        estudante de Publicidade e Propaganda apaixonada
-                        por criar experiências visuais modernas,
-                        estratégicas e memoráveis.
+                        Sou <strong>Lorraini Paris</strong>, acadêmica de Publicidade e Propaganda e profissional focada no desenvolvimento de experiências visuais modernas, estratégicas e de alto impacto. 
                     </p>
 
                     <p>
-                        Meu foco está em Branding, Social Media,
-                        Fotografia Publicitária e Marketing Digital,
-                        conectando marcas e pessoas através de
-                        identidade visual e posicionamento digital.
+                        Com sólida atuação em Branding, Social Media, Fotografia Publicitária e Marketing Digital, dedico-me a conectar marcas e pessoas através de identidades visuais autênticas, narrativas envolvendo e posicionamento estratégico no ambiente digital.
                     </p>
 
-                    <!-- SKILLS -->
+                    <!-- PARÁGRAFO ADICIONADO BASEADO NO CURRÍCULO -->
+                    <p>
+                        Alio minha bagagem acadêmica ao domínio prático de ferramentas essenciais de design, edição e inteligência artificial como Photoshop, Canva e CapCut, somados à experiência em comunicação e técnicas de vendas, entregando soluções criativas completas e focadas em conversão.
+                    </p>
+
                     <div class="skills">
+                        <span>Branding & Identidade Visual</span>
+                        <span>Social Media & Conteúdo</span>
+                        <span>Marketing Digital</span>
+                        <span>Fotografia Publicitária</span>
+                        <span>Copywriting</span>
+                        <span>Design Gráfico</span>
+                    </div>
 
-                        <span>Social Media</span>
+                </div>
 
-                        <span>Branding</span>
+            </div>
 
-                        <span>Marketing</span>
+        </section>
 
-                        <span>Fotografia</span>
+        <!-- ===================================================
+             FORMAÇÃO
+             (Adicione/remova blocos .formacao-item conforme necessário)
+        ==================================================== -->
+        <section id="formacao" class="formacao">
+
+            <div class="container">
+
+                <span class="section-tag">TRAJETÓRIA</span>
+                <h2 class="titulo">Formação & Experiência</h2>
+
+                <div class="formacao-grid">
+
+                    <!-- COLUNA FORMAÇÃO -->
+                    <div class="formacao-col">
+
+                        <h3 class="formacao-col-title">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            Formação Acadêmica
+                        </h3>
+
+                    <!-- FORMAÇÃO 1 -->
+                        <div class="formacao-item">
+                            <div class="formacao-dot"></div>
+                            <div class="formacao-body">
+                                <span class="formacao-periodo">2024 — Cursando</span>
+                                <h4>Publicidade e Propaganda</h4>
+                                <p>GRADUAÇÃO — UNIPAR</p>
+                                <p class="formacao-descricao">
+                                    Focada no desenvolvimento de estratégias de comunicação, posicionamento de marca e criação de campanhas publicitárias. O curso aborda desde o planejamento de marketing e comportamento do consumidor até a direção de arte e inovação no ambiente digital.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /FORMAÇÃO 1 -->
+
+                        <!-- FORMAÇÃO 2 — Duplique este bloco para adicionar mais -->
+                        <div class="formacao-item">
+                            <div class="formacao-dot"></div>
+                            <div class="formacao-body">
+                                <span class="formacao-periodo">2025 — Concluído</span>
+                                <h4>Design Gráfico</h4>
+                                <p>CURSO LIVRE — Nome da Plataforma / Instituição</p>
+                                <p class="formacao-descricao">
+                                    Desenvolvimento de habilidades em identidade visual, tipografia, composição e diagramação. O curso capacita na criação de projetos visuais integrados para meios digitais e impressos, utilizando as principais ferramentas do mercado para traduzir conceitos em soluções estéticas e funcionais.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /FORMAÇÃO 2 -->
+
+                        <!-- FORMAÇÃO 3 — Duplique este bloco para adicionar mais -->
+                        <div class="formacao-item">
+                        <div class="formacao-dot"></div>
+                        <div class="formacao-body">
+                            <span class="formacao-periodo">2025 — Concluído</span>
+                            <h4>Social Media & Branding</h4>
+                            <p>CURSO LIVRE — Nome da Plataforma / Instituição</p>
+                            <p class="formacao-descricao">
+                                Focado na gestão estratégica de redes sociais e na construção de identidades de marca fortes. O curso aborda a criação de conteúdo focado em engajamento, planejamento de cronogramas editoriais, análise de métricas e posicionamento de mercado para conectar marcas ao seu público-alvo de forma relevante.
+                            </p>
+                        </div>
+                    </div>
+                        <!-- /FORMAÇÃO 3 -->
+
+                    </div>
+
+                    <!-- COLUNA EXPERIÊNCIA -->
+                    <div class="formacao-col">
+
+                        <h3 class="formacao-col-title">
+                            <i class="fa-solid fa-briefcase"></i>
+                            Experiência Profissional
+                        </h3>
+
+                        <!-- EXPERIÊNCIA 1 -->
+                        <div class="formacao-item">
+                            <div class="formacao-dot"></div>
+                            <div class="formacao-body">
+                                <span class="formacao-periodo">2024 — Atual</span>
+                                <h4>ATENDENTE DE FARMÁCIA</h4>
+                                <p class="empresa-local">Farmácia Farmavida - Indianópolis, PR</p>
+                                <p class="experiencia-descricao">
+                                    Responsável pelo atendimento ao cliente de excelência, suporte estratégico às vendas e organização do layout de produtos e do ambiente de loja. Atuação em marketing digital através da criação de conteúdo e posts promocionais para as redes sociais (Instagram), visando o engajamento de clientes e o fortalecimento do posicionamento digital da empresa.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /EXPERIÊNCIA 1 -->
+
+                        <!-- EXPERIÊNCIA 2 — Duplique este bloco para adicionar mais -->
+                        <div class="formacao-item">
+                        <div class="formacao-dot"></div>
+                        <div class="formacao-body">
+                            <span class="formacao-periodo">2022 — 2024</span>
+                            <h4>ASSISTENTE ADMINISTRATIVO (APRENDIZ / ESTAGIÁRIA)</h4>
+                            <p class="empresa-local">GTfoods - Indianópolis, PR</p>
+                            <p class="experiencia-descricao">
+                                Atuação no suporte operacional e rotinas administrativas do setor. Responsável pelo gerenciamento, organização e lançamento de notas fiscais, garantindo a conformidade dos processos de faturamento. Experiência no desenvolvimento e alimentação de planilhas e formulários eletrônicos para controle interno, além da análise e consolidação de dados para apoio à tomada de decisão da equipe.
+                            </p>
+                        </div>
+                    </div>
+                        <!-- /EXPERIÊNCIA 2 -->
 
                     </div>
 
@@ -300,115 +326,56 @@
         <!-- ===================================================
              ESPECIALIDADES
         ==================================================== -->
-        <section id="especialidades"
-            class="especialidades">
+        <section id="especialidades" class="especialidades">
 
             <div class="container">
 
-                <span class="section-tag">
-                    ESPECIALIDADES
-                </span>
-
-                <h2 class="titulo">
-                    Áreas de atuação
-                </h2>
+                <span class="section-tag">ESPECIALIDADES</span>
+                <h2 class="titulo">Áreas de atuação</h2>
 
                 <!-- CARDS -->
                 <div class="cards">
 
                     <!-- CARD -->
                     <div class="card">
-
                         <i class="fa-solid fa-bullhorn"></i>
-
-                        <h3>
-                            Social Media
-                        </h3>
-
-                        <p>
-                            Gestão estratégica de redes sociais
-                            com foco em autoridade digital.
-                        </p>
-
+                        <h3>Social Media</h3>
+                        <p>Gestão estratégica de redes sociais com foco em autoridade digital, engajamento de público e criação de narrativas visuais.</p>
                     </div>
 
                     <!-- CARD -->
                     <div class="card">
-
                         <i class="fa-solid fa-pen-nib"></i>
-
-                        <h3>
-                            Branding
-                        </h3>
-
-                        <p>
-                            Criação de identidades visuais
-                            modernas e memoráveis.
-                        </p>
-
+                        <h3>Branding</h3>
+                        <p>Criação de identidades visuais modernas, memoráveis e alinhadas ao propósito da marca para gerar conexão real.</p>
                     </div>
 
                     <!-- CARD -->
                     <div class="card">
-
                         <i class="fa-solid fa-camera"></i>
-
-                        <h3>
-                            Fotografia
-                        </h3>
-
-                        <p>
-                            Produção de imagens publicitárias
-                            para marcas e produtos.
-                        </p>
-
+                        <h3>Fotografia</h3>
+                        <p>Produção de imagens publicitárias para marcas e produtos, destacando diferenciais e agregando valor ao negócio.</p>
                     </div>
 
                     <!-- CARD -->
                     <div class="card">
-
                         <i class="fa-solid fa-chart-line"></i>
-
-                        <h3>
-                            Marketing
-                        </h3>
-
-                        <p>
-                            Estratégias digitais para crescimento
-                            e posicionamento online.
-                        </p>
-
+                        <h3>Marketing</h3>
+                        <p>Estratégias digitais personalizadas para crescimento de mercado, atração de clientes e posicionamento online.</p>
                     </div>
 
                     <!-- CARD -->
                     <div class="card">
-
                         <i class="fa-solid fa-pen"></i>
-
-                        <h3>
-                            Copywriting
-                        </h3>
-
-                        <p>
-                            Escrita persuasiva para campanhas,
-                            redes sociais e posicionamento estratégico.
-                        </p>
-
+                        <h3>Copywriting</h3>
+                        <p>Escrita persuasiva para campanhas, redes sociais e posicionamento focado em conversão e engajamento.</p>
                     </div>
 
                     <!-- CARD -->
                     <div class="card">
-
                         <i class="fa-solid fa-bullseye"></i>
-
-                        <h3>
-                            Estratégia Digital
-                        </h3>
-
-                        <p>
-                            Planejamento focado em presença digital e autoridade de marca.
-                        </p>
-
+                        <h3>Estratégia Digital</h3>
+                        <p>Planejamento focado em presença digital, autoridade de marca e soluções integradas para o ambiente online.</p>
                     </div>
 
                 </div>
@@ -417,87 +384,528 @@
 
         </section>
 
-        <!-- ===================================================
-             PORTFÓLIO
+<!-- ===================================================
+             PROJETOS
         ==================================================== -->
-        <section id="projetos"
-            class="portfolio">
+        <section id="projetos" class="portfolio">
 
             <div class="container">
 
-                <span class="section-tag">
-                    PORTFÓLIO
-                </span>
+                <span class="section-tag">PORTFÓLIO</span>
+                <h2 class="titulo">Projetos Selecionados</h2>
 
-                <h2 class="titulo">
-                    Projetos Selecionados
-                </h2>
+                <!-- FILTROS DE CATEGORIA (opcional — funcional via JS) -->
+                <div class="portfolio-filtros">
+                    <button class="filtro-btn active" data-filtro="todos">Todos</button>
+                    <button class="filtro-btn" data-filtro="Branding">Branding</button>
+                    <button class="filtro-btn" data-filtro="Social Media">Social Media</button>
+                    <button class="filtro-btn" data-filtro="Fotografia">Fotografia</button>
+                    <button class="filtro-btn" data-filtro="Campanha">Campanha</button>
+                </div>
 
-                <!-- GRID -->
-                <div class="grid">
+                <!-- GRID DE PROJETOS (3 colunas desktop) -->
+                <div class="projetos-grid">
 
-                    <!-- PROJETO 1 -->
-                    <div class="item large"
+                    <!-- ==========================================
+                         PROJETO 1
+                         img: caminho da imagem
+                         titulo: nome do projeto
+                         desc: descrição detalhada para o modal
+                         data-categoria: Branding | Social Media | Fotografia | Campanha
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Branding"
                         onclick="abrirProjeto(
-                        'projeto-vogue.jpeg',
-                        'Vogue Concept',
-                        'Projeto editorial focado em branding fashion, identidade visual moderna e direção criativa inspirada em revistas de moda.'
+                            'projeto-vogue.jpeg',
+                            'Vogue Concept',
+                            'Projeto editorial focado em branding fashion, identidade visual moderna e direção criativa inspirada em revistas de moda.',
+                            'Branding'
                         )">
-
-                        <img src="projeto-vogue.jpeg"
-                            alt="Projeto Vogue">
-
-                        <div class="item-overlay">
-
-                            <h3>
-                                Vogue Concept
-                            </h3>
-
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/projeto-vogue.jpeg" alt="Vogue Concept">
                         </div>
-
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Branding</span>
+                            <h3 class="projeto-titulo">Vogue Concept</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
                     </div>
+                    <!-- /PROJETO 1 -->
 
-                    <!-- PROJETO 2 -->
-                    <div class="item"
+                    <!-- ==========================================
+                         PROJETO 2
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Campanha"
                         onclick="abrirProjeto(
-                        'nike-running.jpeg',
-                        'Nike Running',
-                        'Campanha criativa inspirada em performance esportiva, branding visual e marketing para redes sociais.'
+                            'nike-running.jpeg',
+                            'Nike Running',
+                            'Campanha criativa inspirada em performance esportiva, branding visual e marketing para redes sociais.',
+                            'Campanha'
                         )">
-
-                        <img src="nike-running.jpeg"
-                            alt="Nike Running">
-
-                        <div class="item-overlay">
-
-                            <h3>
-                                Nike Running
-                            </h3>
-
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/nike-running.jpeg" alt="Nike Running">
                         </div>
-
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Campanha</span>
+                            <h3 class="projeto-titulo">Nike Running</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
                     </div>
+                    <!-- /PROJETO 2 -->
 
-                    <!-- PROJETO 3 -->
-                    <div class="item"
+                    <!-- ==========================================
+                         PROJETO 3
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Fotografia"
                         onclick="abrirProjeto(
-                        'foto-gastronomia.jpeg',
-                        'Fotografia Publicitária',
-                        'Projeto fotográfico desenvolvido para destacar produtos gastronômicos através de composição visual e iluminação.'
+                            'foto-gastronomia.jpeg',
+                            'Fotografia Publicitária',
+                            'Projeto fotográfico desenvolvido para destacar produtos gastronômicos através de composição visual e iluminação.',
+                            'Fotografia'
                         )">
-
-                        <img src="foto-gastronomia.jpeg"
-                            alt="Fotografia Publicitária">
-
-                        <div class="item-overlay">
-
-                            <h3>
-                                Fotografia Publicitária
-                            </h3>
-
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/foto-gastronomia.jpeg" alt="Fotografia Publicitária">
                         </div>
-
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Fotografia</span>
+                            <h3 class="projeto-titulo">Fotografia Publicitária</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
                     </div>
+                    <!-- /PROJETO 3 -->
+
+                    <!-- ==========================================
+                        PROJETO 4 — CAMPANHA RETRO
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Campanha"
+                        onclick="abrirProjeto(
+                            'publicidade 1980.jpeg',
+                            'Estudo Estético: Década de 1980',
+                            'Projeto de resgate histórico focado na evolução da publicidade e nos padrões da beleza feminina na década de 1980. Combina direção de arte nostálgica, fotografia em tons clássicos e tipografia marcante.',
+                            'Campanha'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade 1980.jpeg" alt="Estudo Estético: Década de 1980">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Campanha</span>
+                            <h3 class="projeto-titulo">Estudo Estético: 1980</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 4 -->
+
+                    <!-- ==========================================
+                        PROJETO 5 — ACADEMIA SMART
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Social Media"
+                        onclick="abrirProjeto(
+                            'publicidade academia smart.jpeg',
+                            'Academia Smart — Criativo Promocional',
+                            'Desenvolvimento de post comercial focado no segmento de fitness e bem-estar. O projeto une identidade visual forte com cores vibrantes, elementos de design modernos e gatilhos de conversão direcionados para campanhas de redes sociais e captação de clientes.',
+                            'Social Media'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade academia smart.jpeg" alt="Academia Smart — Criativo Promocional">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Social Media</span>
+                            <h3 class="projeto-titulo">Academia Smart</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 5 -->
+
+                    <!-- ==========================================
+                        PROJETO 6 — MARKETING JURÍDICO
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Social Media"
+                        onclick="abrirProjeto(
+                            'publicidade advogado.jpeg',
+                            'Marketing Jurídico — Post Informativo',
+                            'Criação de criativo focado em posicionamento e autoridade para o nicho de advocacia. O projeto utiliza uma composição sofisticada com tons neutros, tipografia clean e elementos visuais que transmitem credibilidade, desenvolvido estrategicamente para aumentar o engajamento e a retenção nas redes sociais.',
+                            'Social Media'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade advogado.jpeg" alt="Marketing Jurídico — Francieli Silva">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Social Media</span>
+                            <h3 class="projeto-titulo">Marketing Jurídico</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 6 -->
+
+                    <!-- ==========================================
+                        PROJETO 7 — BRANDING PESSOAL
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Social Media"
+                        onclick="abrirProjeto(
+                            'publicidade autoridade.jpeg',
+                            'Personal Branding — Estratégia de Imagem',
+                            'Criação de design focado em posicionamento de marca pessoal e liderança. O projeto explora o minimalismo elegante, o contraste nítido de tons neutros e uma tipografia editorial sofisticada, gerando um forte impacto visual voltado para a construção de autoridade digital nas redes sociais.',
+                            'Social Media'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade autoridade.jpeg" alt="Personal Branding — Estratégia de Imagem">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Social Media</span>
+                            <h3 class="projeto-titulo">Personal Branding</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 7 -->
+
+                    <!-- ==========================================
+                        PROJETO 8 — SOCIAL MEDIA ENGAJAMENTO
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Social Media"
+                        onclick="abrirProjeto(
+                            'publicidade bom dia com Jesus.jpg',
+                            'Social Media — Conteúdo de Engajamento',
+                            'Criação de criativo focado em marketing de comunidade e conexão diária para redes sociais. O projeto explora elementos simbólicos e uma composição visual harmoniosa com forte apelo emocional, planejado estrategicamente para gerar identificação, compartilhamentos e engajamento orgânico.',
+                            'Social Media'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade bom dia com Jesus.jpeg" alt="Social Media — Conteúdo de Engajamento">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Social Media</span>
+                            <h3 class="projeto-titulo">Design de Engajamento</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 8 -->
+
+                    <!-- ==========================================
+                        PROJETO 9 — CAMPANHA DE TURISMO
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Campanha"
+                        onclick="abrirProjeto(
+                            'publicidade brasil.jpeg',
+                            'Campanha Institucional — Destino Brasil',
+                            'Projeto de direção de arte e manipulação digital voltado para o setor de turismo. A peça destaca a integração harmônica entre tipografia bold em perspectiva e elementos naturais, explorando reflexos realistas na água para criar uma identidade marcante e imersiva.',
+                            'Campanha'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade brasil.jpeg" alt="Campanha Institucional — Destino Brasil">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Campanha</span>
+                            <h3 class="projeto-titulo">Destino Brasil</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 9 -->
+
+                    <!-- ==========================================
+                        PROJETO 10 — DESIGN PET CARE
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Social Media"
+                        onclick="abrirProjeto(
+                            'publicidade cachorro.jpeg',
+                            'Pet Care — Design de Conteúdo e Experiência',
+                            'Desenvolvimento de peça digital para o segmento pet, focada na comunicação direta e na experiência do cliente. O projeto combina elementos visuais temáticos, paleta de cores vibrantes e tipografia descontraída, estruturado estrategicamente para gerar engajamento e clareza informativa nas redes sociais.',
+                            'Social Media'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade cachorro.jpeg" alt="Pet Care — Design de Conteúdo">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Social Media</span>
+                            <h3 class="projeto-titulo">Pet Care Design</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 10 -->
+
+                    <!-- ==========================================
+                        PROJETO 11 — DESIGN PARA GASTRONOMIA
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Social Media"
+                        onclick="abrirProjeto(
+                            'publicidade cafe.jpeg',
+                            'Social Media — Marketing de Experiência (Cafeteria)',
+                            'Desenvolvimento de peça publicitária digital voltada para o nicho de gastronomia e cafeterias. O design explora o apelo sensorial através de uma paleta de cores quentes e elementos em profundidade (blurry effects), criando uma composição convidativa e focada no engajamento de público-alvo.',
+                            'Social Media'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade cafe.jpeg" alt="Social Media — Marketing de Experiência">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Social Media</span>
+                            <h3 class="projeto-titulo">Coffee Shop Design</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 11 -->
+
+                    <!-- ==========================================
+                        PROJETO 12 — DESIGN INSTITUCIONAL / EVENTOS
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Social Media"
+                        onclick="abrirProjeto(
+                            'publicidade culto.jpeg',
+                            'Social Media — Design de Eventos e Comunicação',
+                            'Desenvolvimento de material digital informativo para divulgação de eventos institucionais. O projeto destaca-se pelo uso de tipografia estilizada em neon com disposição vertical, recortes integrados com suavidade ao fundo escuro e excelente hierarquia visual para a disposição de dados cruciais como data, local e participantes.',
+                            'Social Media'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade culto.jpeg" alt="Social Media — Design de Eventos">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Social Media</span>
+                            <h3 class="projeto-titulo">Design de Eventos</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 12 -->
+
+                    <!-- ==========================================
+                        PROJETO 13 — DESIGN FOOD DELIVERY
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Social Media"
+                        onclick="abrirProjeto(
+                            'publicidade dia da pizza.jpeg',
+                            'Social Media — Campanha Promocional (Delivery)',
+                            'Criação de design publicitário para o segmento de alimentação e food delivery. O projeto explora o conceito de urgência através da fusão visual entre o produto e um relógio, utilizando elementos flutuantes tridimensionais, excelente contraste cromático e foco total na conversão e engajamento do consumidor.',
+                            'Social Media'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade dia da pizza.jpeg" alt="Social Media — Campanha Promocional">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Social Media</span>
+                            <h3 class="projeto-titulo">Pizza Delivery Design</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 13 -->
+
+                    <!-- ==========================================
+                         PROJETO 14 — SLOT DISPONÍVEL
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Campanha"
+                        onclick="abrirProjeto(
+                            'publicidade doritos.mp4',
+                            'Motion Design — Campanha Comercial Doritos',
+                            'Desenvolvimento de animação publicitária (Motion Design) focado em engajamento de público e ativação de produto para o segmento de snacks. A peça explora transições dinâmicas, elementos gráficos flutuantes e técnicas de gatilhos visuais de apetite appeal para impulsionar a lembrança de marca e interatividade digital.',
+                            'Campanha'
+                        )">
+                        <div class="projeto-img">
+                            <video src="assets/PROJETOS/publicidade doritos.mp4" autoplay muted loop style="width:100%; height:100%; object-fit:cover;"></video>
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Campanha</span>
+                            <h3 class="projeto-titulo">Doritos Motion Campaign</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 14 -->
+
+                    <!-- ==========================================
+                         PROJETO 15 — SLOT DISPONÍVEL
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Social Media"
+                        onclick="abrirProjeto(
+                            'publicidade faturar.jpeg',
+                            'Social Media — Design de Posicionamento e Mentoria',
+                            'Criação de criativo digital focado em conversão e branding de autoridade para o nicho corporativo e jurídico. O projeto alia uma identidade visual clean com texturas clássicas de fundo, tipografia de forte impacto e hierarquia de leitura planejada estrategicamente para venda de mentorias e infoprodutos.',
+                            'Social Media'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade faturar.jpeg" alt="Social Media — Design de Posicionamento">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Social Media</span>
+                            <h3 class="projeto-titulo">Branding & Mentoria</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 15 -->
+
+                    <!-- ==========================================
+                         PROJETO 16 — SLOT DISPONÍVEL
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Campanha"
+                        onclick="abrirProjeto(
+                            'publicidade invista.jpg',
+                            'Campanha — Fashion Marketing (Invista-se)',
+                            'Desenvolvimento de peça conceitual para o mercado de moda e vestuário urbano. O projeto adota a estética street style combinada com intervenção tipográfica moderna e ousada, focando no branding de comportamento, apelo estético contemporâneo e forte identidade visual para atração do público jovem e antenado.',
+                            'Campanha'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade invista.jpeg" alt="Campanha — Fashion Marketing">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Campanha</span>
+                            <h3 class="projeto-titulo">Fashion Campaign</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 16 -->
+
+                   <!-- ==========================================
+                        PROJETO 17 — MANIPULAÇÃO & CAMPANHA PUBLICITÁRIA
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Campanha"
+                        onclick="abrirProjeto(
+                            'publicidade partiu.jpeg',
+                            'Campanha de Turismo — Conceito Partiu Maldivas',
+                            'Projeto de manipulação digital e direção de arte focado no mercado de turismo e agências de viagens. A peça explora uma transição criativa de cenários (surrealismo pop), onde o elemento central rompe a barreira digital do smartphone para simular a desconexão do ambiente corporativo e a imersão em um destino paradisíaco.',
+                            'Campanha'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade partiu.jpeg" alt="Campanha de Turismo — Maldivas">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Campanha</span>
+                            <h3 class="projeto-titulo">Partiu Maldivas</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 17 -->
+
+                   <!-- ==========================================
+                        PROJETO 18 — MOTION DESIGN / COSMÉTICOS
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Social Media"
+                        onclick="abrirProjeto(
+                            'publicidade yara.mp4',
+                            'Social Media — Lançamento de Produto (Perfumaria)',
+                            'Desenvolvimento de criativo animado voltado para o nicho de cosméticos e perfumaria. O design utiliza uma paleta cromática vibrante e minimalista, destacando o produto central através de uma moldura tipográfica em movimento circular dinâmico, planejada estrategicamente para campanhas de lançamentos e alto engajamento no Reels ou Stories.',
+                            'Social Media'
+                        )">
+                        <div class="projeto-img">
+                            <!-- Renderização em formato de vídeo em loop para destacar o motion no grid -->
+                            <video src="assets/PROJETOS/publicidade perfurme.mp4" autoplay muted loop style="width:100%; height:100%; object-fit:cover;"></video>
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Social Media</span>
+                            <h3 class="projeto-titulo">Yara Perfume Motion</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 18 -->
+
+                    <!-- ==========================================
+                        PROJETO 19 — BRANDING & PORTFÓLIO ELEGANTE
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Social Media"
+                        onclick="abrirProjeto(
+                            'publicidade portifolio.jpeg',
+                            'Social Media — Capa de Portfólio e Branding Pessoal',
+                            'Criação de design institucional para apresentação de portfólio profissional de alto padrão. A composição equilibra sofisticação e minimalismo através de paleta de tons neutros e dourados, grafismos orgânicos sutis e uma tipografia serifada elegante voltada ao mercado de estética, moda ou consultoria premium.',
+                            'Social Media'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade portifolio.jpeg" alt="Social Media — Branding Pessoal">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Social Media</span>
+                            <h3 class="projeto-titulo">Premium Portfolio Design</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 19 -->
+
+                    <!-- ==========================================
+                        PROJETO 20 — ESTRATÉGIA DE CONTEÚDO
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Social Media"
+                        onclick="abrirProjeto(
+                            'publicidade publico.jpeg',
+                            'Social Media — Design Estratégico e Marketing de Conteúdo',
+                            'Criação de criativo educativo focado em autoridade digital e estratégias de engajamento para redes sociais. O design adota uma linha executiva com sobreposição de camadas em opacidade sutil, excelente equilíbrio de tons neutros e forte legibilidade tipográfica para atrair profissionais de marketing e infoprodutores.',
+                            'Social Media'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade publico.jpeg" alt="Social Media — Marketing de Conteúdo">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Social Media</span>
+                            <h3 class="projeto-titulo">Estratégia de Público</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 20 -->
+
+                    <!-- ==========================================
+                        PROJETO 21 — DESIGN FOOD & DELIVERY
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Social Media"
+                        onclick="abrirProjeto(
+                            'publicidade sexta do hamburger.jpeg',
+                            'Social Media — Design Promocional (Burger Primer)',
+                            'Desenvolvimento de criativo publicitário focado no segmento de food delivery e hamburgueria. A peça explora forte apelo visual (appetite appeal) através da sobreposição de tipografia bold e elementos tridimensionais, utilizando uma paleta de cores quente e fundo dinâmico para impulsionar as vendas de fim de semana.',
+                            'Social Media'
+                        )">
+                        <div class="projeto-img">
+                            <img src="assets/PROJETOS/publicidade sexta do hamburger.jpeg" alt="Social Media — Design Promocional">
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Social Media</span>
+                            <h3 class="projeto-titulo">Burger Primer Design</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 21 -->
+
+                    <!-- ==========================================
+                        PROJETO 22 — MOTION DESIGN & TURISMO
+                    =========================================== -->
+                    <div class="projeto-card"
+                        data-categoria="Campanha"
+                        onclick="abrirProjeto(
+                            'publicidade ipanema.mp4',
+                            'Motion Design — Campanha de Turismo Ipanema',
+                            'Desenvolvimento de peça em Motion Design com foco no setor de turismo e aviação. O projeto combina transições fluidas de elementos tridimensionais (aeronave) integrados a cenários naturais em alta definição, explorando tipografia imersiva e composição cinematográfica para ativação de marca e engajamento digital.',
+                            'Campanha'
+                        )">
+                        <div class="projeto-img">
+                            <!-- Renderização em formato de vídeo em loop para destacar a animação diretamente no grid -->
+                            <video src="assets/PROJETOS/WhatsApp Video 2026-06-16 at 21.07.22.mp4" autoplay muted loop style="width:100%; height:100%; object-fit:cover;"></video>
+                        </div>
+                        <div class="projeto-overlay">
+                            <span class="projeto-categoria">Campanha</span>
+                            <h3 class="projeto-titulo">Ipanema Motion Campaign</h3>
+                            <span class="projeto-ver">Ver projeto <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <!-- /PROJETO 22 -->
+
+                    <!-- ==========================================
+                         ADICIONE OS DEMAIS PROJETOS ABAIXO CRIANDO SLOTS COPIA E COLA
+                         Copie qualquer bloco acima e altere:
+                         - data-categoria
+                         - src da imagem
+                         - título no onclick e no h3
+                         - descrição no onclick
+                    =========================================== -->
+
+                    <!-- ... Repita o padrão acima para projetos ... -->
 
                 </div>
 
@@ -508,51 +916,34 @@
         <!-- ===================================================
              MODAL PROJETO
         ==================================================== -->
-        <div class="modal"
-            id="modalProjeto">
+        <div class="modal" id="modalProjeto">
 
             <div class="modal-content">
 
                 <!-- FECHAR -->
-                <span class="close-modal">
-
-                    &times;
-
-                </span>
+                <button class="close-modal" aria-label="Fechar">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
 
                 <!-- IMAGEM -->
                 <div class="modal-image">
-
-                    <img id="modalImg"
-                        src=""
-                        alt="Projeto">
-
+                    <img id="modalImg" src="" alt="Projeto">
                 </div>
 
                 <!-- TEXTO -->
                 <div class="modal-text">
 
-                    <span class="modal-tag">
-                        Projeto Publicitário
-                    </span>
+                    <span class="modal-tag" id="modalCategoria">Projeto Publicitário</span>
 
-                    <h2 id="modalTitle">
-                        Nome Projeto
-                    </h2>
+                    <h2 id="modalTitle">Nome Projeto</h2>
 
-                    <p id="modalDesc">
-                        Descrição do projeto.
-                    </p>
+                    <p id="modalDesc">Descrição do projeto.</p>
 
-                    <!-- SKILLS -->
+                    <!-- TOOLS -->
                     <div class="modal-skills">
-
                         <span>Photoshop</span>
-
                         <span>Branding</span>
-
                         <span>Social Media</span>
-
                     </div>
 
                 </div>
@@ -564,85 +955,63 @@
         <!-- ===================================================
              CONTATO
         ==================================================== -->
-        <section id="contato"
-            class="contato">
+        <section id="contato" class="contato">
 
             <div class="container">
 
                 <!-- TÍTULO -->
                 <div class="contato-titulo">
-
-                    <h2>
-                        Contatos
-                    </h2>
-
+                    <span class="section-tag">VAMOS CONVERSAR</span>
+                    <h2>Contatos</h2>
                     <div class="linha"></div>
-
                 </div>
 
                 <!-- GRID -->
                 <div class="contato-grid">
 
                     <!-- EMAIL -->
-                    <a href="lorrainiespangaparis@gmail.com"
-                        class="contato-card">
-
+                    <a href="mailto:lorrainiespangaparis@gmail.com" class="contato-card">
                         <div class="icon-circle">
-
                             <i class="fa-solid fa-envelope"></i>
-
                         </div>
-
-                        <h3>
-                            E-mail
-                        </h3>
-
-                        <p>
-                            lorrainiespangaparis@gmail.com
-                        </p>
-
+                        <h3>E-mail</h3>
+                        <p>lorrainiespangaparis@gmail.com</p>
                     </a>
 
                     <!-- LINKEDIN -->
-                    <a href="https://www.linkedin.com/in/lorraini-espanga-paris-3aaa0a23a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    <a href="https://www.linkedin.com/in/lorraini-espanga-paris-3aaa0a23a"
                         target="_blank"
-                        class="contato-card">
-
+                        class="contato-card"
+                        rel="noopener noreferrer">
                         <div class="icon-circle">
-
                             <i class="fa-brands fa-linkedin-in"></i>
-
                         </div>
-
-                        <h3>
-                            Linkedin
-                        </h3>
-
-                        <p>
-                            Lorraini Espanga Paris
-                        </p>
-
+                        <h3>LinkedIn</h3>
+                        <p>Lorraini Espanga Paris</p>
                     </a>
 
                     <!-- INSTAGRAM -->
-                    <a href="https://www.instagram.com/lorraini.socialmedia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    <a href="https://www.instagram.com/lorraini.socialmedia"
                         target="_blank"
-                        class="contato-card">
-
+                        class="contato-card"
+                        rel="noopener noreferrer">
                         <div class="icon-circle">
-
                             <i class="fa-brands fa-instagram"></i>
-
                         </div>
+                        <h3>Instagram</h3>
+                        <p>@lorraini.socialmedia</p>
+                    </a>
 
-                        <h3>
-                            Instagram
-                        </h3>
-
-                        <p>
-                            @lorraini.socialmedia
-                        </p>
-
+                    <!-- WHATSAPP -->
+                    <a href="https://wa.me/5544984299424"
+                        target="_blank"
+                        class="contato-card"
+                        rel="noopener noreferrer">
+                        <div class="icon-circle">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <h3>WhatsApp</h3>
+                        <p>+55 44 9 8429-9424</p>
                     </a>
 
                 </div>
@@ -657,11 +1026,7 @@
          FOOTER
     ==================================================== -->
     <footer class="footer">
-
-        <p>
-            © 2026 - Desenvolvido por Levy Andrade
-        </p>
-
+        <p>© 2026 Lorraini Espanga Paris — Desenvolvido por <a href="#" target="_blank">Levy Andrade</a></p>
     </footer>
 
     <!-- ===================================================
