@@ -215,8 +215,8 @@ form.addEventListener('submit', (e) => {
   const subject = document.getElementById('subject').value;
   const message = document.getElementById('message').value;
   const email = document.getElementById('email').value;
-  const text = `Olá Lorraini! Meu nome é ${name} (${email}).%0AAssunto: ${subject}%0A%0A${message}`;
-  window.open(`https://wa.me/5544984294424?text=${text}`, '_blank');
+  const text = encodeURIComponent(`Olá Lorraini, tudo bem? Vim pelo seu portifólio e achei incrível, podemos conversar?\n\nMeu nome é ${name} (${email}).\nAssunto: ${subject}\n\n${message}`);
+  window.open(`https://wa.me/5544984299424?text=${text}`, '_blank');
   formNote.textContent = 'Redirecionando para o WhatsApp...';
   form.reset();
 });
