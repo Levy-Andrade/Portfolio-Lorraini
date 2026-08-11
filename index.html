@@ -291,11 +291,21 @@
   <div class="modal-backdrop" id="modalBackdrop"></div>
   <div class="modal-box">
     <button class="modal-close" id="modalClose">&times;</button>
-    <div class="modal-media" id="modalMedia"></div>
+    <div class="modal-media-frame">
+      <span class="modal-corner tl"></span><span class="modal-corner tr"></span>
+      <span class="modal-corner bl"></span><span class="modal-corner br"></span>
+      <div class="modal-media" id="modalMedia"></div>
+    </div>
     <div class="modal-info">
-      <span class="tl-tag" id="modalCat"></span>
-      <h3 id="modalTitle"></h3>
-      <p id="modalDesc"></p>
+      <div class="modal-info-bg" aria-hidden="true">
+        <div class="modal-aurora"></div>
+        <div class="modal-grid"></div>
+      </div>
+      <div class="modal-info-content">
+        <span class="tl-tag" id="modalCat"></span>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+      </div>
     </div>
   </div>
 </div>
