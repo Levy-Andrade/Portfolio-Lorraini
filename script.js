@@ -1,655 +1,230 @@
-/* =========================================================
-   PORTFÓLIO — LORRAINI ESPANGA PARIS
-   script.js — Versão 2.0
-   Desenvolvido por Levy Andrade
-========================================================= */
+/* ===== THEME TOGGLE ===== */
+const root = document.documentElement;
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('lp-theme');
+if(savedTheme) root.setAttribute('data-theme', savedTheme);
+themeToggle.addEventListener('click', () => {
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('lp-theme', next);
+});
 
-/* =========================================================
-   PRELOADER
-========================================================= */
+/* ===== NAV SCROLL & BURGER ===== */
+const nav = document.getElementById('nav');
+const navLinks = document.getElementById('navLinks');
+const burger = document.getElementById('burger');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+  updateProgress();
+  updateActiveLink();
+});
+burger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  burger.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-window.addEventListener("load", () => {
+/* ===== SCROLL PROGRESS ===== */
+const progressBar = document.getElementById('progressBar');
+function updateProgress(){
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  progressBar.style.width = scrolled + '%';
+}
 
-    const loader = document.querySelector(".preloader");
+/* ===== ACTIVE LINK ===== */
+const sections = document.querySelectorAll('section[id]');
+function updateActiveLink(){
+  let current = 'home';
+  sections.forEach(sec => {
+    const top = sec.offsetTop - 140;
+    if(window.scrollY >= top) current = sec.id;
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}
 
-    if (loader) {
+/* ===== TIMELINE SCROLL ANIMATION ===== */
+const timelines = document.querySelectorAll('.timeline');
+function updateTimelineProgress(){
+  timelines.forEach(tl => {
+    const rect = tl.getBoundingClientRect();
+    const trigger = window.innerHeight * 0.82;
+    const progress = (trigger - rect.top) / rect.height;
+    tl.style.setProperty('--tl-progress', Math.max(0, Math.min(1, progress)));
+  });
+}
+window.addEventListener('scroll', updateTimelineProgress);
+window.addEventListener('resize', updateTimelineProgress);
+updateTimelineProgress();
 
-        loader.classList.add("loader-hidden");
-
-        setTimeout(() => {
-
-            loader.style.display = "none";
-
-        }, 500);
-
+/* ===== REVEAL ON SCROLL (with stagger) ===== */
+const revealEls = document.querySelectorAll('.reveal, .reveal-up');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const group = e.target.closest('.cards-grid, .projects-grid, .timeline, .chips');
+      if(group){
+        const siblings = [...group.children].filter(c => c.classList.contains('reveal') || c.classList.contains('reveal-up'));
+        const idx = siblings.indexOf(e.target);
+        e.target.style.transitionDelay = (idx * 0.08) + 's';
+      }
+      e.target.classList.add('in');
+      io.unobserve(e.target);
     }
-
-});
-
-/* =========================================================
-   MENU MOBILE
-========================================================= */
-
-const menuToggle = document.querySelector(".menu-toggle");
-const navMenu    = document.querySelector(".nav-list");
-
-if (menuToggle) {
-
-    menuToggle.addEventListener("click", () => {
-
-        navMenu.classList.toggle("active");
-        menuToggle.classList.toggle("open");
-
-    });
-
-}
-
-/* =========================================================
-   DARK MODE — mantém preferência via localStorage
-========================================================= */
-
-const darkModeToggle = document.getElementById("dark-mode-toggle");
-
-/* Restaura preferência salva */
-if (localStorage.getItem("darkMode") === "enabled") {
-
-    document.body.classList.add("dark-mode");
-
-    if (darkModeToggle) darkModeToggle.checked = true;
-
-}
-
-if (darkModeToggle) {
-
-    darkModeToggle.addEventListener("change", () => {
-
-        if (darkModeToggle.checked) {
-
-            document.body.classList.add("dark-mode");
-            localStorage.setItem("darkMode", "enabled");
-
-        } else {
-
-            document.body.classList.remove("dark-mode");
-            localStorage.setItem("darkMode", "disabled");
-
-        }
-
-    });
-
-}
-
-/* =========================================================
-   SCROLL SUAVE — links do menu
-========================================================= */
-
-document.querySelectorAll(".nav-list a").forEach(link => {
-
-    link.addEventListener("click", function (e) {
-
-        e.preventDefault();
-
-        const id      = this.getAttribute("href");
-        const section = document.querySelector(id);
-
-        if (section) {
-
-            section.scrollIntoView({ behavior: "smooth", block: "start" });
-
-        }
-
-        /* Fecha menu mobile ao clicar */
-        if (navMenu) navMenu.classList.remove("active");
-
-    });
-
-});
-
-/* =========================================================
-   HEADER — sombra ao rolar
-========================================================= */
-
-const header = document.querySelector(".header");
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 50) {
-        header.classList.add("scroll-header");
-    } else {
-        header.classList.remove("scroll-header");
-    }
-
-});
-
-/* =========================================================
-   EFEITO DIGITAÇÃO — hero subtitle
-========================================================= */
-
-const elementoTexto = document.querySelector(".hero-content p");
-
-if (elementoTexto) {
-
-    const texto = "Social Media • Design Gráfico • Marketing Digital • Fotografia Publicitária";
-    let index    = 0;
-
-    elementoTexto.innerHTML = "";
-
-    function digitar() {
-
-        if (index < texto.length) {
-
-            elementoTexto.innerHTML += texto.charAt(index);
-            index++;
-            setTimeout(digitar, 40);
-
-        }
-
-    }
-
-    digitar();
-
-}
-
-/* =========================================================
-   BOTÃO VOLTAR AO TOPO
-========================================================= */
-
-const btnTopo = document.createElement("button");
-
-btnTopo.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
-btnTopo.classList.add("btn-topo");
-btnTopo.setAttribute("aria-label", "Voltar ao topo");
-
-document.body.appendChild(btnTopo);
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 400) {
-        btnTopo.classList.add("show-top");
-    } else {
-        btnTopo.classList.remove("show-top");
-    }
-
-});
-
-btnTopo.addEventListener("click", () => {
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
-});
-
-/* =========================================================
-   1. MODAL DE PROJETOS — dinâmico, um único modal para tudo
-   ─────────────────────────────────────────────────────────
-   Preenche #modalProjeto com os dados do card clicado.
-   Fecha via: botão X  |  clique no overlay  |  tecla ESC
-========================================================= */
-
-const modal        = document.getElementById("modalProjeto");
-const modalImg     = document.getElementById("modalImg");
-const modalTitle   = document.getElementById("modalTitle");
-const modalDesc    = document.getElementById("modalDesc");
-const modalCategoria = document.getElementById("modalCategoria");
-const closeModal   = document.querySelector(".close-modal");
-
-/**
- * Abre o modal preenchendo-o com os dados do projeto.
- *
- * @param {string} arquivo   - Nome do arquivo OU caminho completo
- * @param {string} titulo    - Título do projeto
- * @param {string} descricao - Descrição detalhada
- * @param {string} categoria - Categoria (Branding, Social Media…)
- */
-function abrirProjeto(arquivo, titulo, descricao, categoria) {
-
-    if (!modal) return;
-
-    /* ── Normaliza o caminho ──────────────────────────────────
-       Alguns cards passam só o nome (ex: 'projeto-vogue.jpeg'),
-       outros passam o caminho completo ('assets/PROJETOS/x.jpg').
-       Garante sempre o prefixo correto sem duplicar.
-    ──────────────────────────────────────────────────────── */
-    const prefixo  = "assets/PROJETOS/";
-    const srcFinal = arquivo.startsWith("assets/") || arquivo.startsWith("http")
-        ? arquivo
-        : prefixo + arquivo;
-
-    /* ── Detecta se é vídeo ou imagem ── */
-    const isVideo = /\.(mp4|webm|ogg)$/i.test(srcFinal);
-    const modalImageEl = document.querySelector(".modal-image");
-
-    if (isVideo) {
-
-        /* Injeta vídeo sem estilos inline — object-fit e dimensões
-           são controlados exclusivamente pelo CSS para permitir
-           contain tanto no desktop quanto no mobile */
-        modalImageEl.innerHTML = `
-            <video src="${srcFinal}"
-                   autoplay muted loop playsinline
-                   class="modal-video">
-            </video>`;
-
-    } else {
-
-        /* Garante que temos a tag img (restaura se foi substituída por vídeo) */
-        if (!document.getElementById("modalImg")) {
-            modalImageEl.innerHTML = `<img id="modalImg" src="" alt="Projeto">`;
-        }
-
-        const imgEl  = document.getElementById("modalImg");
-        imgEl.src    = srcFinal;
-        imgEl.alt    = titulo;
-
-    }
-
-    /* Preenche texto */
-    if (modalTitle)     modalTitle.textContent     = titulo;
-    if (modalDesc)      modalDesc.textContent       = descricao;
-    if (modalCategoria) modalCategoria.textContent  = categoria || "Projeto Publicitário";
-
-    /* Exibe modal com double-rAF para garantir transição CSS */
-    modal.style.display = "flex";
-
-    requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-            modal.classList.add("modal-ativo");
-            /* Garante que o modal volte ao topo a cada abertura */
-            modal.scrollTop = 0;
-        });
-    });
-
-    /* No desktop trava o scroll do body para evitar rolagem dupla.
-       No mobile (< 768px) deixa o .modal em si rolar — não trava o body. */
-    if (window.innerWidth >= 768) {
-        document.body.style.overflow = "hidden";
-    }
-
-    if (closeModal) closeModal.focus();
-
-}
-
-/** Fecha o modal */
-function fecharModal() {
-
-    if (!modal) return;
-
-    modal.classList.remove("modal-ativo");
-
-    modal.addEventListener("transitionend", () => {
-
-        modal.style.display = "none";
-
-        /* Para o vídeo se houver um no modal */
-        const videoEl = document.querySelector(".modal-image video");
-        if (videoEl) videoEl.pause();
-
-    }, { once: true });
-
-    /* Restaura scroll do body (no mobile pode já estar "" mas não faz mal) */
-    document.body.style.overflow = "";
-
-}
-
-/* Botão X */
-if (closeModal) {
-
-    closeModal.addEventListener("click", fecharModal);
-
-}
-
-/* Clique fora do conteúdo (overlay escuro) */
-if (modal) {
-
-    modal.addEventListener("click", (e) => {
-
-        if (e.target === modal) fecharModal();
-
-    });
-
-}
-
-/* Tecla ESC */
-document.addEventListener("keydown", (e) => {
-
-    if (e.key === "Escape" && modal && modal.style.display === "flex") {
-
-        fecharModal();
-
-    }
-
-});
-
-/* =========================================================
-   FILTROS DE CATEGORIA — portfólio
-========================================================= */
-
-const filtroBtns   = document.querySelectorAll(".filtro-btn");
-const projetoCards = document.querySelectorAll(".projeto-card");
-
-filtroBtns.forEach(btn => {
-
-    btn.addEventListener("click", () => {
-
-        /* Atualiza botão ativo */
-        filtroBtns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        const filtro = btn.dataset.filtro;
-
-        projetoCards.forEach(card => {
-
-            const categoria = card.dataset.categoria;
-
-            if (filtro === "todos" || categoria === filtro) {
-
-                card.style.display = "";
-                card.classList.add("filtro-show");
-
-            } else {
-
-                card.style.display = "none";
-                card.classList.remove("filtro-show");
-
-            }
-
-        });
-
-    });
-
-});
-
-/* =========================================================
-   EFEITO HOVER 3D — cards de especialidades
-========================================================= */
-
-const especialidadeCards = document.querySelectorAll(".card");
-
-especialidadeCards.forEach(card => {
-
-    card.addEventListener("mousemove", (e) => {
-
-        const rect = card.getBoundingClientRect();
-        const x    = e.clientX - rect.left;
-        const y    = e.clientY - rect.top;
-
-        card.style.setProperty("--x", `${x}px`);
-        card.style.setProperty("--y", `${y}px`);
-
-    });
-
-});
-
-/* =========================================================
-   2. INTERSECTIONOBSERVER — Animações de Scroll (Aparecimento)
-   ========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. Configurações do Observer (dispara quando 15% do elemento aparece na tela)
-    const observerOptions = {
-        root: null, // usa a viewport do navegador
-        rootMargin: "0px",
-        threshold: 0.15 
-    };
-
-    // 2. Função que adiciona a classe .show quando o elemento entra na tela
-    const observerCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-                // Opcional: para a animação rodar apenas uma vez, descomente a linha abaixo:
-                // observer.unobserve(entry.target);
-            } else {
-                // Se quiser que o elemento suma de novo ao sair da tela (efeito contínuo), mantenha a linha abaixo.
-                // Se quiser que apareça uma vez só e fique, remova ou comente esta linha:
-                entry.target.classList.remove("show");
-            }
-        });
-    };
-
-    // 3. Criando a instância do Observer
-    const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
-
-    // 4. Selecionando todos os elementos que devem ser animados (Genéricos + Formação)
-    const elementsToAnimate = document.querySelectorAll(`
-        .formacao-item, 
-        .card, 
-        .sobre-content, 
-        .hero-content, 
-        .hero-image, 
-        .contato-card
-    `);
-
-    // 5. Colocando o Observer para monitorar cada um dos elementos
-    elementsToAnimate.forEach(element => {
-        // Garante que o elemento existe na página antes de observar para evitar erros no console
-        if (element) {
-            scrollObserver.observe(element);
-        }
-    });
-});
-
-const elementosAnimados = document.querySelectorAll(
-    ".card, .sobre-content, .hero-content, .hero-image, .contato-card"
-);
-
-const observerGeral = new IntersectionObserver((entries) => {
-
-    entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-            entry.target.classList.add("show");
-            observerGeral.unobserve(entry.target); /* Dispara apenas uma vez */
-
-        }
-
-    });
-
+  });
 }, { threshold: 0.15 });
+revealEls.forEach(el => io.observe(el));
+// hero elements reveal immediately
+setTimeout(() => document.querySelectorAll('.hero-text .reveal-up').forEach(el => el.classList.add('in')), 150);
 
-elementosAnimados.forEach(el => observerGeral.observe(el));
+/* ===== PARALLAX HERO PHOTO ===== */
+const heroPhoto = document.querySelector('.hero-photo');
+window.addEventListener('scroll', () => {
+  if(!heroPhoto) return;
+  const y = window.scrollY;
+  if(y < window.innerHeight){
+    heroPhoto.style.transform = `translateY(${y * 0.18}px)`;
+  }
+});
 
-/* ── Observer da Formação — efeito storytelling com delay escalonado ── */
+/* ===== PROJECTS DATA ===== */
+const projects = [
+  { cat:'branding', catLabel:'Branding', title:'Vogue Concept', type:'image', src:'assets/PROJETOS/projeto-vogue.jpeg',
+    desc:'Projeto editorial focado em branding fashion, identidade visual moderna e direção criativa inspirada em revistas de moda.' },
+  { cat:'campanha', catLabel:'Campanha', title:'Nike Running', type:'image', src:'assets/PROJETOS/nike-running.jpeg',
+    desc:'Campanha criativa inspirada em performance esportiva, branding visual e marketing para redes sociais.' },
+  { cat:'fotografia', catLabel:'Fotografia', title:'Fotografia Publicitária', type:'image', src:'assets/PROJETOS/foto-gastronomia.jpeg',
+    desc:'Projeto fotográfico desenvolvido para destacar produtos gastronômicos através de composição visual e iluminação.' },
+  { cat:'campanha', catLabel:'Campanha', title:'Estudo Estético: 1980', type:'image', src:'assets/PROJETOS/publicidade%201980.jpeg',
+    desc:'Projeto de resgate histórico focado na evolução da publicidade e nos padrões da beleza feminina na década de 1980. Combina direção de arte nostálgica, fotografia em tons clássicos e tipografia marcante.' },
+  { cat:'social', catLabel:'Social Media', title:'Academia Smart', type:'image', src:'assets/PROJETOS/publicidade%20academia%20smart.jpeg',
+    desc:'Post comercial para o segmento de fitness e bem-estar, unindo identidade visual forte, cores vibrantes e gatilhos de conversão direcionados para captação de clientes.' },
+  { cat:'social', catLabel:'Social Media', title:'Marketing Jurídico', type:'image', src:'assets/PROJETOS/publicidade%20advogado.jpeg',
+    desc:'Criativo focado em posicionamento e autoridade para o nicho de advocacia, com composição sofisticada, tons neutros e tipografia clean para gerar credibilidade e engajamento.' },
+  { cat:'social', catLabel:'Social Media', title:'Personal Branding', type:'image', src:'assets/PROJETOS/publicidade%20autoridade.jpeg',
+    desc:'Design focado em posicionamento de marca pessoal e liderança, com minimalismo elegante e tipografia editorial sofisticada para construção de autoridade digital.' },
+  { cat:'social', catLabel:'Social Media', title:'Design de Engajamento', type:'image', src:'assets/PROJETOS/publicidade%20bom%20dia%20com%20Jesus.jpeg',
+    desc:'Criativo focado em marketing de comunidade e conexão diária para redes sociais, com elementos simbólicos e forte apelo emocional para gerar identificação e engajamento orgânico.' },
+  { cat:'campanha', catLabel:'Campanha', title:'Destino Brasil', type:'image', src:'assets/PROJETOS/publicidade%20brasil.jpeg',
+    desc:'Direção de arte e manipulação digital para o setor de turismo, integrando tipografia bold em perspectiva e reflexos realistas na água para uma identidade marcante e imersiva.' },
+  { cat:'social', catLabel:'Social Media', title:'Pet Care Design', type:'image', src:'assets/PROJETOS/publicidade%20cachorro.jpeg',
+    desc:'Peça digital para o segmento pet, com elementos visuais temáticos, paleta vibrante e tipografia descontraída para gerar engajamento e clareza informativa.' },
+  { cat:'social', catLabel:'Social Media', title:'Coffee Shop Design', type:'image', src:'assets/PROJETOS/publicidade%20cafe.jpeg',
+    desc:'Peça publicitária para o nicho de gastronomia e cafeterias, com apelo sensorial através de cores quentes e efeitos de profundidade para uma composição convidativa.' },
+  { cat:'social', catLabel:'Social Media', title:'Design de Eventos', type:'image', src:'assets/PROJETOS/publicidade%20culto.jpeg',
+    desc:'Material informativo para divulgação de eventos institucionais, com tipografia estilizada em neon e excelente hierarquia visual para dados como data, local e participantes.' },
+  { cat:'social', catLabel:'Social Media', title:'Pizza Delivery Design', type:'image', src:'assets/PROJETOS/publicidade%20dia%20da%20pizza.jpeg',
+    desc:'Design publicitário para food delivery, explorando urgência através da fusão visual entre o produto e um relógio, com forte contraste cromático e foco em conversão.' },
+  { cat:'campanha', catLabel:'Campanha', title:'Doritos Motion Campaign', type:'video', src:'assets/PROJETOS/publicidade%20doritos.mp4',
+    desc:'Animação publicitária (motion design) para engajamento e ativação de produto no segmento de snacks, com transições dinâmicas e gatilhos visuais de apetite.' },
+  { cat:'social', catLabel:'Social Media', title:'Branding & Mentoria', type:'image', src:'assets/PROJETOS/publicidade%20faturar.jpeg',
+    desc:'Criativo focado em conversão e branding de autoridade para o nicho corporativo e jurídico, com identidade clean e tipografia de forte impacto para venda de mentorias.' },
+  { cat:'campanha', catLabel:'Campanha', title:'Fashion Campaign', type:'image', src:'assets/PROJETOS/publicidade%20invista.jpeg',
+    desc:'Peça conceitual para o mercado de moda e vestuário urbano, com estética street style e intervenção tipográfica moderna para atração do público jovem.' },
+  { cat:'campanha', catLabel:'Campanha', title:'Partiu Maldivas', type:'image', src:'assets/PROJETOS/publicidade%20partiu.jpeg',
+    desc:'Manipulação digital e direção de arte para o mercado de turismo, com transição criativa de cenários simulando a imersão em um destino paradisíaco.' },
+  { cat:'social', catLabel:'Social Media', title:'Yara Perfume Motion', type:'video', src:'assets/PROJETOS/publicidade%20perfurme.mp4',
+    desc:'Criativo animado para o nicho de cosméticos e perfumaria, com paleta vibrante e moldura tipográfica em movimento circular para campanhas de lançamento.' },
+  { cat:'social', catLabel:'Social Media', title:'Premium Portfolio Design', type:'image', src:'assets/PROJETOS/publicidade%20portifolio.jpeg',
+    desc:'Design institucional para apresentação de portfólio de alto padrão, com paleta de tons neutros e dourados e tipografia serifada elegante.' },
+  { cat:'social', catLabel:'Social Media', title:'Estratégia de Público', type:'image', src:'assets/PROJETOS/publicidade%20publico.jpeg',
+    desc:'Criativo educativo focado em autoridade digital e estratégias de engajamento, com camadas em opacidade sutil e forte legibilidade tipográfica.' },
+  { cat:'social', catLabel:'Social Media', title:'Burger Primer Design', type:'image', src:'assets/PROJETOS/publicidade%20sexta%20do%20hamburger.jpeg',
+    desc:'Criativo para food delivery e hamburgueria, com forte apelo visual, tipografia bold sobreposta e paleta de cores quentes para impulsionar vendas de fim de semana.' },
+  { cat:'campanha', catLabel:'Campanha', title:'Ipanema Motion Campaign', type:'video', src:'assets/PROJETOS/publicidade%20ipanema.mp4',
+    desc:'Peça em motion design para o setor de turismo e aviação, combinando transições fluidas de elementos 3D e composição cinematográfica para ativação de marca.' },
+];
 
-const formacaoItems = document.querySelectorAll(".formacao-item");
+const grid = document.getElementById('projectsGrid');
+projects.forEach((p, i) => {
+  const card = document.createElement('div');
+  card.className = 'proj-frame reveal';
+  card.dataset.cat = p.cat;
+  card.innerHTML = `
+    <div class="proj-media">
+      <span class="proj-corner tl"></span><span class="proj-corner tr"></span>
+      <span class="proj-corner bl"></span><span class="proj-corner br"></span>
+      ${p.type === 'video'
+        ? `<video src="${p.src}" muted loop playsinline></video><span class="proj-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>`
+        : `<img src="${p.src}" alt="${p.title}" loading="lazy">`}
+    </div>
+    <div class="proj-plate">
+      <span class="proj-index">${String(i + 1).padStart(2, '0')}</span>
+      <div class="proj-plate-text">
+        <span class="proj-cat">${p.catLabel}</span>
+        <h4>${p.title}</h4>
+      </div>
+      <span class="proj-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+    </div>
+  `;
+  card.addEventListener('click', () => openModal(p));
+  if(p.type === 'video'){
+    card.addEventListener('mouseenter', () => card.querySelector('video').play());
+    card.addEventListener('mouseleave', () => card.querySelector('video').pause());
+  }
+  grid.appendChild(card);
+  io.observe(card);
+});
 
-const observerFormacao = new IntersectionObserver((entries) => {
-
-    entries.forEach((entry, i) => {
-
-        if (entry.isIntersecting) {
-
-            /*
-             * Delay progressivo: cada item aparece 120ms depois do anterior.
-             * O índice real do elemento na NodeList garante a sequência correta.
-             */
-            const indexEl = Array.from(formacaoItems).indexOf(entry.target);
-
-            setTimeout(() => {
-
-                entry.target.classList.add("show");
-
-            }, indexEl * 120);
-
-            observerFormacao.unobserve(entry.target);
-
-        }
-
+/* filters */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.proj-frame').forEach(card => {
+      card.classList.toggle('hide', f !== 'all' && card.dataset.cat !== f);
     });
-
-}, {
-
-    threshold: 0.15,
-    rootMargin: "0px 0px -40px 0px" /* Inicia a animação um pouco antes */
-
+  });
 });
 
-formacaoItems.forEach(item => observerFormacao.observe(item));
+/* ===== MODAL ===== */
+const modal = document.getElementById('projectModal');
+const modalMedia = document.getElementById('modalMedia');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalCat = document.getElementById('modalCat');
 
-/* =========================================================
-   ANIMAÇÃO CONTATOS — fade-in escalonado via Observer
-   (substitui o setTimeout cego que rodava sem esperar scroll)
-========================================================= */
+function openModal(p){
+  modalMedia.innerHTML = p.type === 'video'
+    ? `<video src="${p.src}" controls autoplay muted loop playsinline></video>`
+    : `<img src="${p.src}" alt="${p.title}">`;
+  modalTitle.textContent = p.title;
+  modalDesc.textContent = p.desc;
+  modalCat.textContent = p.catLabel;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+  modalMedia.innerHTML = '';
+}
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalBackdrop').addEventListener('click', closeModal);
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
 
-const contatoCards = document.querySelectorAll(".contato-card");
-
-const observerContato = new IntersectionObserver((entries) => {
-
-    entries.forEach((entry, i) => {
-
-        if (entry.isIntersecting) {
-
-            const indexEl = Array.from(contatoCards).indexOf(entry.target);
-
-            setTimeout(() => {
-
-                entry.target.style.opacity   = "1";
-                entry.target.style.transform = "translateY(0)";
-
-            }, indexEl * 150);
-
-            observerContato.unobserve(entry.target);
-
-        }
-
-    });
-
-}, { threshold: 0.2 });
-
-/* Parte do estado inicial oculto */
-contatoCards.forEach(card => {
-
-    card.style.opacity   = "0";
-    card.style.transform = "translateY(40px)";
-    card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-
-    observerContato.observe(card);
-
+/* ===== CONTACT FORM ===== */
+const form = document.getElementById('contactForm');
+const formNote = document.getElementById('formNote');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('message').value;
+  const email = document.getElementById('email').value;
+  const text = `Olá Lorraini! Meu nome é ${name} (${email}).%0AAssunto: ${subject}%0A%0A${message}`;
+  window.open(`https://wa.me/5544984294424?text=${text}`, '_blank');
+  formNote.textContent = 'Redirecionando para o WhatsApp...';
+  form.reset();
 });
 
-/* =========================================================
-   ESTILOS DINÂMICOS — injetados via JS
-   (mantém tudo em um único arquivo; sem dependência extra de CSS)
-========================================================= */
+/* ===== FAB MENU ===== */
+const fabWrap = document.querySelector('.fab-wrap');
+const fabMain = document.getElementById('fabMain');
+fabMain.addEventListener('click', () => fabWrap.classList.toggle('open'));
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    const style = document.createElement("style");
-
-    style.innerHTML = `
-
-        /* ── Elementos animados via Observer ── */
-        .card,
-        .sobre-content,
-        .hero-content,
-        .hero-image,
-        .contato-card {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .show {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-
-        /* ── Formação — animação storytelling ── */
-        .formacao-item {
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .formacao-col:nth-child(2) .formacao-item {
-            transform: translateX(30px);
-        }
-
-        .formacao-item.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* ── Modal — transição de entrada e saída ── */
-        .modal {
-            opacity: 0;
-            transition: opacity 0.35s ease;
-            pointer-events: none;
-        }
-
-        .modal.modal-ativo {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .modal-content {
-            transform: translateY(30px) scale(0.97);
-            transition: transform 0.35s ease;
-        }
-
-        .modal.modal-ativo .modal-content {
-            transform: translateY(0) scale(1);
-        }
-
-        /* ── Filtros do portfólio ── */
-        .filtro-btn {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        /* ── Botão Voltar ao Topo ── */
-        .btn-topo {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 55px;
-            height: 55px;
-            border: none;
-            border-radius: 50%;
-            background: #ff5ebc;
-            color: #fff;
-            font-size: 18px;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.3s ease;
-            z-index: 999;
-            box-shadow: 0 10px 25px rgba(255, 94, 188, 0.35);
-        }
-
-        .btn-topo.show-top {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .btn-topo:hover {
-            transform: translateY(-5px);
-        }
-
-        /* ── Header com scroll ── */
-        .scroll-header {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
-        }
-
-        body.dark-mode .scroll-header {
-            background: rgba(15, 15, 15, 0.95);
-        }
-
-    `;
-
-    document.head.appendChild(style);
-
-});
-
-/* =========================================================
-   CONSOLE PERSONALIZADO
-========================================================= */
-
-console.log(`
-
-🎀 Portfólio Lorraini Paris — carregado com sucesso!
-   Publicidade • Branding • Social Media
-   Desenvolvido por Levy Andrade — v2.0
-
-`);
+/* ===== FOOTER YEAR ===== */
+document.getElementById('year').textContent = new Date().getFullYear();
